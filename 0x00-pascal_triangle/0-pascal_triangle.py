@@ -10,9 +10,9 @@ def pascal_triangle(n):
     """
     triangle = []
 
-    if num <= 0:
+    if n <= 0:
         return triangle
-    for i in range(num):
+    for i in range(n):
         tmp_list = []
 
         for j in range(i+1):
