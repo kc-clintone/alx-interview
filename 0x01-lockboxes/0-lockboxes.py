@@ -4,6 +4,10 @@ Checking the lockboxes
 """
 
 def canUnlockAll(boxes):
+    """
+    Making necessary checks
+    """
+
     n = len(boxes)
     unlocked = set([0])  # Starting with the first box unlocked
     keys = [0]  # Then start with the keys from the first box
