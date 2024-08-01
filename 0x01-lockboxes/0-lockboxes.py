@@ -10,13 +10,13 @@ def canUnlockAll(boxes):
     """
 
     n = len(boxes)
-    unlocked = set([0])  # Starting with the first box unlocked
-    keys = [0]  # Then start with the keys from the first box
+    unlocked = set([0])
+    keys = [0]
 
     while keys:
         current_key = keys.pop()
         for key in boxes[current_key]:
-            if key not in unlocked and key < n:  # We then check if the box is within range and not unlocked yet
+            if key not in unlocked and key < n:
                 unlocked.add(key)
                 keys.append(key)
 
