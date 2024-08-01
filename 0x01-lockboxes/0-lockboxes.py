@@ -3,6 +3,7 @@
 Checking the lockboxes
 """
 
+
 def canUnlockAll(boxes):
     """
     Making necessary checks
