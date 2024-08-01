@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+Checking the lockboxes
+"""
+
 def canUnlockAll(boxes):
     n = len(boxes)
     unlocked = set([0])  # Starting with the first box unlocked
