@@ -3,9 +3,9 @@
 Module for fetching and caching web pages.
 """
 
+from functools import wraps
 import requests
 import redis
-from functools import wraps
 from typing import Callable
 
 
