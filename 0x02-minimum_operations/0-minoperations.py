@@ -10,6 +10,7 @@ def minOperations(n):
     This function calculates the number of operations
     required for a task
     """
+
     if n == 1:
         return 0
 
@@ -23,4 +24,3 @@ def minOperations(n):
         factor += 1
 
     return operations
-
