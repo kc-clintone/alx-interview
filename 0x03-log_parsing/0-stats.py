@@ -5,10 +5,10 @@ total file size and HTTP status codes.
 """
 
 
-import sys
 import signal
+import sys
 
-# Initialize metrics
+
 total_file_size = 0
 status_codes_count = {
     200: 0,
@@ -22,41 +22,44 @@ status_codes_count = {
 }
 
 def print_stats():
-    """Print the statistics collected so far."""
+    """
+    Print the statistics collected so far.
+    """
     print(f"File size: {total_file_size}")
     for code in sorted(status_codes_count):
         if status_codes_count[code] > 0:
             print(f"{code}: {status_codes_count[code]}")
 
 def process_line(line):
-    """Process a line of input to update the metrics."""
+    """
+    Process a line of input to update the metrics.
+    """
     global total_file_size
     try:
         parts = line.split()
         if len(parts) < 7:
             return
 
-        # Extract the status code and file size
         status_code = int(parts[-2])
         file_size = int(parts[-1])
 
-        # Update total file size
         total_file_size += file_size
 
-        # Update status code count
         if status_code in status_codes_count:
             status_codes_count[status_code] += 1
 
     except (ValueError, IndexError):
-        # Skip lines that do not conform to the expected format
         return
 
 def signal_handler(sig, frame):
-    """Handle the Ctrl+C signal to print the stats before exiting."""
+    """
+    Handle the Ctrl+C signal to print the stats before exiting.
+    """
     print_stats()
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
+
 
 if __name__ == "__main__":
     line_count = 0
@@ -69,7 +72,6 @@ if __name__ == "__main__":
             print_stats()
             line_count = 0
 
-    # Print remaining stats if the input ends before an interruption
     if line_count > 0:
         print_stats()
 
