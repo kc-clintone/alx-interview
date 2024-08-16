@@ -4,6 +4,7 @@ Script to compute metrics from log file lines, tracking
 total file size and HTTP status codes.
 """
 
+
 import signal
 import sys
 
@@ -42,8 +43,9 @@ def process_line(line):
     global total_file_size
     try:
         parts = line.split()
-        if len(parts) < 7 or not parts[-2].isdigit() or not parts[-1].isdigit():
-            raise ValueError("Incorrect format")
+        if len(parts) < 7:
+            return
+
         status_code = int(parts[-2])
         file_size = int(parts[-1])
 
@@ -71,22 +73,13 @@ signal.signal(signal.SIGINT, signal_handler)
 if __name__ == "__main__":
     line_count = 0
 
-    try:
-        for line in sys.stdin:
-            process_line(line)
-            line_count += 1
+    for line in sys.stdin:
+        process_line(line)
+        line_count += 1
 
-            if line_count == 10:
-                print_stats()
-                line_count = 0
-
-        if line_count > 0:
+        if line_count == 10:
             print_stats()
+            line_count = 0
 
-        if line_count == 0:
-            print("No data processed. The input file might be empty or incorrect.")
-
-    except KeyboardInterrupt:
+    if line_count > 0:
         print_stats()
-        sys.exit(0)
-
