@@ -25,15 +25,20 @@ def print_stats():
     """
     Print the statistics collected so far.
     """
+
+
     print(f"File size: {total_file_size}")
     for code in sorted(status_codes_count):
         if status_codes_count[code] > 0:
             print(f"{code}: {status_codes_count[code]}")
 
+
 def process_line(line):
     """
     Process a line of input to update the metrics.
     """
+
+
     global total_file_size
     try:
         parts = line.split()
