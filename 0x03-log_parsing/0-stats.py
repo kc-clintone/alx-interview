@@ -21,6 +21,7 @@ status_codes_count = {
     500: 0
 }
 
+
 def print_stats():
     """
     Print the statistics collected so far.
@@ -56,10 +57,13 @@ def process_line(line):
     except (ValueError, IndexError):
         return
 
+
 def signal_handler(sig, frame):
     """
     Handle the Ctrl+C signal to print the stats before exiting.
     """
+
+
     print_stats()
     sys.exit(0)
 
