@@ -17,6 +17,7 @@ def validUTF8(data):
     Returns:
     bool: True if the dataset is a valid UTF-8 encoding, False otherwise.
     """
+
     num_bytes = 0
 
     mask1 = 1 << 7
@@ -32,9 +33,11 @@ def validUTF8(data):
                 return False
             elif (byte & (mask1 | mask2 | (1 << 5))) == (mask1 | mask2):
                 num_bytes = 2
-            elif (byte & (mask1 | mask2 | (1 << 5) | (1 << 4))) == (mask1 | mask2 | (1 << 5)):
+            elif (byte & (mask1 | mask2 | (1 << 5) |
+                  (1 << 4))) == (mask1 | mask2 | (1 << 5)):
                 num_bytes = 3
-            elif (byte & (mask1 | mask2 | (1 << 5) | (1 << 4) | (1 << 3))) == (mask1 | mask2 | (1 << 5) | (1 << 4)):
+            elif (byte & (mask1 | mask2 | (1 << 5) | (1 << 4) |
+                  (1 << 3))) == (mask1 | mask2 | (1 << 5) | (1 << 4)):
                 num_bytes = 4
             else:
                 return False
