@@ -16,6 +16,7 @@ def print_solution(board):
     Parameters:
     board (list of list of int): 2D list representing the chessboard.
     """
+
     solution = [[i, row.index(1)] for i, row in enumerate(board)]
     print(solution)
 
@@ -33,6 +34,7 @@ def is_safe(board, row, col):
     Returns:
     bool: True if it's safe to place the queen, False otherwise.
     """
+
     if 1 in board[row][:col]:
         return False
 
@@ -45,6 +47,7 @@ def is_safe(board, row, col):
             return False
 
     return True
+
 
 def solve_nqueens_util(board, col):
     """
@@ -60,6 +63,7 @@ def solve_nqueens_util(board, col):
     Returns:
     bool: True if a solution is found, False otherwise.
     """
+
     if col >= len(board):
         print_solution(board)
         return True
@@ -73,6 +77,7 @@ def solve_nqueens_util(board, col):
 
     return res
 
+
 def solve_nqueens(N):
     """
     Solves the N-Queens problem by initializing the chessboard and starting the backtracking process.
@@ -80,9 +85,11 @@ def solve_nqueens(N):
     Parameters:
     N (int): The size of the chessboard (N x N).
     """
+
     board = [[0] * N for _ in range(N)]
     if not solve_nqueens_util(board, 0):
         print("No solution exists")
+
 
 def validate_input(args):
     """
@@ -94,6 +101,7 @@ def validate_input(args):
     Returns:
     int: The validated size of the chessboard (N).
     """
+
     if len(args) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
