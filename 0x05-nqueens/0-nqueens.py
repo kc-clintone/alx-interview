@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Let's play a little chess.
+"""
 
 import sys
 
