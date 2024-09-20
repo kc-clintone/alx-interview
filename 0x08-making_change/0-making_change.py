@@ -13,14 +13,14 @@ def makeChange(coins, total):
     stack = total
     counter = 0
     index = 0
-    sorted = sorted(coins, reverse=True)
+    sorted_stack = sorted(coins, reverse=True)
     coin = len(coins)
     while stack > 0:
-        if index >= counter:
+        if index >= coin:
             return -1
-        if stack - sorted[index] >= 0:
-             stack -= sorted[index]
-            counter += 1
+        if stack - sorted_stack[index] >= 0:
+             stack -= sorted_stack[index]
+             counter += 1
         else:
             index += 1
     return counter
