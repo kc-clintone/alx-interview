@@ -19,8 +19,8 @@ def makeChange(coins, total):
         if index >= coin:
             return -1
         if stack - sorted_stack[index] >= 0:
-             stack -= sorted_stack[index]
-             counter += 1
+            stack -= sorted_stack[index]
+            counter += 1
         else:
             index += 1
     return counter
