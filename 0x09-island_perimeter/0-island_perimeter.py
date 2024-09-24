@@ -1,4 +1,4 @@
-#/usr/bin/python3
+#!/usr/bin/python3
 """
 Let's compute the perimeter of an island.
 """
@@ -9,7 +9,7 @@ def island_perimeter(grid):
      This function computes the perimeter of an island.
     """
     result = 0
-    if type(grid) != list:
+    if type(grid) is not list:
         return 0
     g = len(grid)
     for k, row in enumerate(grid):
