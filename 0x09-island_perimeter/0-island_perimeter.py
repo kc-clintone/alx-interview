@@ -6,7 +6,7 @@ Let's compute the perimeter of an island.
 
 def island_perimeter(grid):
     """
-     This function computes the perimeter of an island.
+     This is the function that computes the perimeter of an island.
     """
     result = 0
     if type(grid) is not list:
